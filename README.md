@@ -1,228 +1,102 @@
-# Student Management Endpoints API Documentation
+# **Online School Registration System**
 
-## Overview
+### **Introduction**
 
-The Student Management API allows you to manage student records. You can register new students, retrieve student information, update existing records, and delete students from the database.
+The **Online School Registration System** simplifies the school admission process for students and administrators. It allows students to create accounts, submit registration details, upload documents, and track admission status. Administrators can manage and verify student information and documents through a centralized platform.
 
-## Base URL
+Final project blog article: [Read the Blog Post](#)  
+Author LinkedIn:  
 
-```
-http://yourapi.com/api
-```
+- [Abogo Lincoln](https://www.linkedin.com/in/abogo-nono)
 
-## Endpoints
+---
 
-1. ### Register Student
+### **Installation**
 
-- **Endpoint:** `/register_student`
-- **Method:** `POST`
-- **Description:** Registers a new student in the system.
+Follow these steps to set up the project on your local machine:
 
-**Request Body:**
+1. **Clone the repository:**
 
-```json
-{
-    "firstName": "Abogo",
-    "lastName": "Nono",
-    "email": "abogo.nono@example.com",
-    "password": "securePassword123",
-    "dob": "2000-01-01",
-    "phoneNumber": "123-456-7890",
-    "address": "123 Main St, Anytown, CM",
-    "program": "Computer Science"
-}
-```
+   ```bash
+   git clone https://github.com/abogo-nono/ors-backend.git
+   cd ors-backend
+   ```
 
-**Responses:**
+2. **Set up a virtual environment:**
 
-- **201 Created**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # For Linux/MacOS
+   venv\Scripts\activate     # For Windows
+   ```
 
-```json
-{
-    "message": "Student registered successfully!"
-}
-```
+3. **Install dependencies:**
 
-- **500 Internal Server Error**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```json
-{
-    "error": "Error message"
-}
-```
+4. **Set up the database:**
+   Create a `.env` file in the root directory and add the required database configuration.  
+   Then, run the following commands to create the database tables:
 
-2. ### Get Student by ID
+   ```bash
+   flask db init
+   flask db migrate
+   flask db upgrade
+   ```
 
-- **Endpoint:** `/get_student/<int:student_id>`
-- **Method:** `GET`
-- **Description:** Retrieves detailed information about a specific student by their `ID`.
+5. **Run the application:**
 
-**Path Parameters:**
+   ```bash
+   flask run
+   ```
 
-- `student_id` (integer): The unique `ID` of the student.
+---
 
-**Responses:**
+### **Screenshots**
 
-- **200 OK**
+![Student Registration Page](screenshots/Screenshot%202024-09-25%20025658.png)
 
-```json
-{
-    "data": {
-    "firstName": "Abogo",
-    "lastName": "Nono",
-    "email": "abogo.nono@example.com",
-        "dob": "2000-01-01",
-        "phoneNumber": "123-456-7890",
-        "address": "123 Main St, Anytown, CM",
-        "program": "Computer Science"
-    }
-}
+![Admin Dashboard](screenshots/Screenshot%202024-09-25%20025955.png)
 
-```
+![Admin Dashboard](screenshots/Screenshot%202024-09-25%20030057.png)
 
-**404 Not Found**
+---
 
-```json
-{
-    "error": "Student not found"
-}
-```
+### **Usage**
 
-- 500 **Internal Server Error**
+- **For Students:**
+  - Register on the platform.
+  - Submit required documents.
+  - Track admission status.
 
-```json
-{
-    "error": "Error message"
-}
-```
+- **For Administrators:**
+  - View student submissions.
+  - Verify documents.
+  - Update admission status.
 
-### 3. Get All Students
+---
 
-- **Endpoint: /students**
-- **Method: GET**
-- **Description: Retrieves a list of all registered students.**
+### **Contributing**
 
-**Responses:**
-**200 OK**
+We welcome contributions! Please follow these steps:
 
-```json
-{
-    "data": [
-        {
-      "firstName": "Abogo",
-      "lastName": "Nono",
-      "email": "abogo.nono@example.com",
-            "dob": "2000-01-01",
-            "phoneNumber": "123-456-7890",
-            "address": "123 Main St, Anytown, USA",
-            "program": "Computer Science"
-        },
-        ...
-    ]
-}
-```
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add a feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Create a pull request.
 
-- **500 Internal Server Error**
+---
 
-```json
-{
-    "error": "Error message"
-}
-```
+### **Related Projects**
 
-### 4. Update Student
+- [Online Course Registration System](https://github.com/iamtusharbhatia/Online-Course-Registration-System)
 
-- **Endpoint:** `/update_student/<int:student_id>`
-- **Method**: `PATCH`
-- **Description:** Updates an existing student’s information.
-**Path Parameters:**
-- `student_id`: The `ID` of the student to update.
+---
 
-**Request Body:**
+### **Licensing**
 
-```json
-{
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "email": "jane.doe@example.com",
-    "dob": "1999-12-31",
-    "phoneNumber": "987-654-3210",
-    "address": "456 Another St, Othertown, USA",
-    "program": "Software Engineering"
-}
-```
-
-**Responses:**
-
-- **200 OK**
-
-```json
-{
-    "message": "Student updated successfully!"
-}
-```
-
-- **404 Not Found**
-
-```json
-{
-    "error": "Student not found"
-}
-```
-
-- **400 Bad Request**
-
-```json
-{
-    "error": "Validation error message"
-}
-```
-
-- **500 Internal Server Error**
-
-```json
-{
-    "error": "Error message"
-}
-```
-
-### 5. Delete Student
-
-- **Endpoint:** `/delete_student/<int:student_id>`
-- **Method:** `DELETE`
-- **Description:** Deletes a student by their `ID`.
-
-**Path Parameters:**
-
-- `student_id`: The `ID` of the student to delete.
-**Responses:**
-
-**200 OK**
-
-```json
-{
-    "message": "Student deleted successfully!"
-}
-```
-
-**404 Not Found**
-
-```json
-{
-    "error": "Student not found"
-}
-```
-
-**500 Internal Server Error**
-
-```json
-{
-    "error": "Error message"
-}
-```
-
-## Notes
-
-- Ensure that all required fields are included in the request body for creating or updating a student.
-- The date format for `dob` should be `YYYY-MM-DD`.
-- Handle error responses appropriately in your application to enhance
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
