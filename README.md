@@ -4,7 +4,7 @@
 
 The **Online School Registration System** simplifies the school admission process for students and administrators. It allows students to create accounts, submit registration details, upload documents, and track admission status. Administrators can manage and verify student information and documents through a centralized platform.
 
-Final project blog article: [Read the Blog Post](#)  
+Final project blog article: [Read the Blog Post]([#](https://blog.abogo.tech/announcing-the-online-school-registration-system-api-simplifying-school-admissions-for-developers?showSharer=true))  
 Author LinkedIn:  
 
 - [Abogo Lincoln](https://www.linkedin.com/in/abogo-nono)
